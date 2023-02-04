@@ -1,10 +1,12 @@
 import speech_recognition as sr
 from time import sleep
 
+
 def take():
     r = sr.Recognizer()
 
-    audioFile = sr.AudioFile('Tim.wav')
+    # Filename is your own audio file. Record an audio and put here:
+    audioFile = sr.AudioFile('Filename.wav')
     with audioFile as source:
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source)
@@ -12,10 +14,7 @@ def take():
         print("Recognising your speech...")
 
     try:
-        query = r.recognize_google(audio, language='en-Us');
-        print("Done...")
-        sleep(1)
-        print("Audio file says: ")
+        query = r.recognize_google(audio, language='en-Us')
         sleep(1)
         print("\n")
         print(query)
@@ -27,9 +26,7 @@ def take():
 
     return query
 
-if __name__ == "__main__":
-
-    query = take()
-    sleep(10)
-    print("Quitting the program now")
-    sleep(3)
+query = take()
+sleep(10)
+print("Quitting the program now")
+sleep(3)
